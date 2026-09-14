@@ -32,7 +32,6 @@ import {
   useTransform,
   type MotionValue,
 } from "framer-motion";
-import phlavioPhoto from "@/assets/phlavio.jpg?url";
 import phlavioEnhancedPhoto from "@/assets/phlavio-enhanced.png?url";
 import projectAVideo from "@/assets/project-a.mp4?url";
 import projectBVideo from "@/assets/project-b.mp4?url";
@@ -41,7 +40,6 @@ import projectDVideoAsset from "@/assets/project-d.mp4.asset.json";
 import logoUrl from "@/assets/logo.png?url";
 
 const HERO_PHOTO = phlavioEnhancedPhoto;
-const ABOUT_PHOTO = phlavioPhoto;
 const VIDEO_A = projectAVideo;
 const VIDEO_B = projectBVideo;
 const VIDEO_C = projectCVideo;
@@ -56,6 +54,22 @@ const GITHUB = "https://github.com/PhlavioAlves24";
 const INSTAGRAM = "https://www.instagram.com/thinkingincode.inc/";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Phlavio Alves — Web Designer" },
+      {
+        name: "description",
+        content: "Portfólio de Phlavio Alves: sites autorais e landing pages de alta conversão.",
+      },
+      { property: "og:title", content: "Phlavio Alves — Web Designer" },
+      {
+        property: "og:description",
+        content: "Sites autorais e estratégicos que transformam visitas em clientes.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
@@ -415,7 +429,7 @@ function About() {
   return (
     <section id="about" className="relative px-6 py-32 md:px-10">
       <div className="mx-auto grid max-w-7xl grid-cols-12 gap-6">
-        <div className="col-span-12 md:col-span-5 md:col-start-2">
+        <div className="col-span-12 md:col-span-8 md:col-start-3">
           <Reveal>
             <span className="text-xs uppercase tracking-[0.3em] text-brown-soft">
               — Sobre
@@ -453,25 +467,6 @@ function About() {
           </div>
         </div>
 
-        <div className="col-span-12 md:col-span-4 md:col-start-8">
-          <motion.div
-            initial={{ opacity: 0, y: 40, scale: 0.96 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="relative aspect-[4/5] overflow-hidden rounded-[32px] shadow-soft"
-          >
-            <img src={ABOUT_PHOTO} alt="Phlavio Alves retrato" decoding="async" loading="lazy" className="h-full w-full object-cover" />
-            <div className="absolute inset-x-0 bottom-0 p-5">
-              <div className="glass rounded-2xl p-4">
-                <div className="text-[10px] uppercase tracking-[0.3em] text-brown-soft">Founder</div>
-                <div className="mt-1 font-display text-2xl text-brown-deep" translate="no">
-                  Phlavio Alves da Silva Jr.
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
       </div>
     </section>
   );
