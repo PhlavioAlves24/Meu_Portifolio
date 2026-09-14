@@ -935,6 +935,11 @@ function ProcessStep({ step, index }: { step: { n: string; title: string; body: 
 /* ---------------------------------------------------------------- */
 const TESTIMONIALS = [
   {
+    name: "Cliente",
+    role: "Indicação via Facebook",
+    quote: "Cheguei no Phlavio através de um grupo no facebook. E surpreendeu as expectativas. Sempre pro ativo para entender as solicitações me entregou uma excelente landing page. Muito bom, indico!",
+  },
+  {
     name: "Marina Costa",
     role: "Fundadora, Nova Studio",
     quote: "O Phlavio traduziu a alma da marca em um site que impressiona antes mesmo da primeira palavra ser lida. Dobramos leads em duas semanas.",
@@ -948,11 +953,6 @@ const TESTIMONIALS = [
     name: "Dra. Camila Vale",
     role: "Diretora, Clínica Vale",
     quote: "Passamos a receber pacientes de outras cidades logo após o lançamento. O site nos posicionou como referência premium na região.",
-  },
-  {
-    name: "Cliente",
-    role: "Indicação via Facebook",
-    quote: "Cheguei no Phlavio através de um grupo no facebook. E surpreendeu as expectativas. Sempre pro ativo para entender as solicitações me entregou uma excelente landing page. Muito bom, indico!",
   },
 ];
 
