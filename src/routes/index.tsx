@@ -950,9 +950,9 @@ const TESTIMONIALS = [
     quote: "Passamos a receber pacientes de outras cidades logo após o lançamento. O site nos posicionou como referência premium na região.",
   },
   {
-    name: "Bruno Aragão",
-    role: "CEO, Casa Praiã",
-    quote: "Nosso e-commerce ganhou personalidade. A performance e o design elevaram o ticket médio em 27%.",
+    name: "Cliente",
+    role: "Indicação via Facebook",
+    quote: "Cheguei no Phlavio através de um grupo no facebook. E surpreendeu as expectativas. Sempre pro ativo para entender as solicitações me entregou uma excelente landing page. Muito bom, indico!",
   },
 ];
 
