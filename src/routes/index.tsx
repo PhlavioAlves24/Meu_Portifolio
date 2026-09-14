@@ -33,15 +33,19 @@ import {
   type MotionValue,
 } from "framer-motion";
 import phlavioPhoto from "@/assets/phlavio.jpg?url";
+import phlavioEnhancedPhoto from "@/assets/phlavio-enhanced.png?url";
 import projectAVideo from "@/assets/project-a.mp4?url";
 import projectBVideo from "@/assets/project-b.mp4?url";
 import projectCVideo from "@/assets/project-c.mp4?url";
+import projectDVideoAsset from "@/assets/project-d.mp4.asset.json";
 import logoUrl from "@/assets/logo.png?url";
 
-const PHOTO = phlavioPhoto;
+const HERO_PHOTO = phlavioEnhancedPhoto;
+const ABOUT_PHOTO = phlavioPhoto;
 const VIDEO_A = projectAVideo;
 const VIDEO_B = projectBVideo;
 const VIDEO_C = projectCVideo;
+const VIDEO_D = projectDVideoAsset.url;
 const LOGO = logoUrl;
 
 const EMAIL = "thinkingincode5@gmail.com";
@@ -59,7 +63,6 @@ function Index() {
   return (
     <div className="relative min-h-screen overflow-x-hidden text-brown-deep">
       <AmbientBackground />
-      <CustomCursor />
       <Nav />
       <Hero />
       <Marquee />
@@ -105,57 +108,6 @@ function AmbientBackground() {
       </motion.div>
       <div className="absolute inset-0 noise-bg opacity-[0.18] mix-blend-multiply" />
     </div>
-  );
-}
-
-/* ---------------------------------------------------------------- */
-/* Custom magnetic cursor                                            */
-/* ---------------------------------------------------------------- */
-function CustomCursor() {
-  const x = useMotionValue(-100);
-  const y = useMotionValue(-100);
-  const sx = useSpring(x, { stiffness: 500, damping: 40, mass: 0.4 });
-  const sy = useSpring(y, { stiffness: 500, damping: 40, mass: 0.4 });
-  const [variant, setVariant] = useState<"default" | "hover" | "media">("default");
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (window.matchMedia("(pointer: coarse)").matches) return;
-    const move = (e: MouseEvent) => {
-      x.set(e.clientX);
-      y.set(e.clientY);
-    };
-    const over = (e: MouseEvent) => {
-      const t = e.target as HTMLElement | null;
-      if (!t) return;
-      if (t.closest("[data-cursor='media']")) setVariant("media");
-      else if (t.closest("a, button, [data-cursor='hover']")) setVariant("hover");
-      else setVariant("default");
-    };
-    window.addEventListener("mousemove", move);
-    window.addEventListener("mouseover", over);
-    return () => {
-      window.removeEventListener("mousemove", move);
-      window.removeEventListener("mouseover", over);
-    };
-  }, [x, y]);
-
-  const size = variant === "media" ? 88 : variant === "hover" ? 56 : 14;
-  const label = variant === "media" ? "PLAY" : "";
-
-  return (
-    <motion.div
-      style={{ x: sx, y: sy }}
-      className="pointer-events-none fixed left-0 top-0 z-[100] hidden md:block"
-    >
-      <motion.div
-        animate={{ width: size, height: size, opacity: 1 }}
-        transition={{ type: "spring", stiffness: 300, damping: 25 }}
-        className="-translate-x-1/2 -translate-y-1/2 rounded-full bg-brown-deep text-[10px] font-medium uppercase tracking-[0.2em] text-[color:var(--off-white)] mix-blend-difference flex items-center justify-center"
-      >
-        {label}
-      </motion.div>
-    </motion.div>
   );
 }
 
@@ -239,7 +191,7 @@ function Hero() {
               <div className="absolute -inset-6 rounded-[42px] bg-[radial-gradient(circle_at_30%_30%,#F4EFE8,transparent_70%)] blur-2xl" />
               <div className="relative h-full w-full overflow-hidden rounded-[36px] shadow-soft ring-1 ring-black/5">
                 <motion.img
-                  src={PHOTO}
+                  src={HERO_PHOTO}
                   alt="Phlavio Alves"
                   decoding="async"
                   fetchPriority="high"
@@ -509,7 +461,7 @@ function About() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="relative aspect-[4/5] overflow-hidden rounded-[32px] shadow-soft"
           >
-            <img src={PHOTO} alt="Phlavio Alves retrato" decoding="async" fetchPriority="high" className="h-full w-full object-cover" />
+            <img src={ABOUT_PHOTO} alt="Phlavio Alves retrato" decoding="async" loading="lazy" className="h-full w-full object-cover" />
             <div className="absolute inset-x-0 bottom-0 p-5">
               <div className="glass rounded-2xl p-4">
                 <div className="text-[10px] uppercase tracking-[0.3em] text-brown-soft">Founder</div>
@@ -568,6 +520,16 @@ const PROJECTS: Project[] = [
       "Loja online com identidade sofisticada e checkout otimizado. Aumento de 42% na taxa de conversão nos primeiros 60 dias.",
     stack: ["Shopify", "Liquid", "React", "Klaviyo"],
     year: "2025",
+  },
+  {
+    id: "p4",
+    video: VIDEO_D,
+    title: "Protocolo Referência — Landing Page",
+    category: "Landing Page",
+    description:
+      "Experiência digital para posicionamento profissional na implantodontia, com apresentação clara da metodologia e foco em conversão.",
+    stack: ["Web Design", "UI Design", "Desenvolvimento", "Conversão"],
+    year: "2026",
   },
 ];
 
@@ -656,7 +618,6 @@ function ProjectCard({
   return (
     <motion.button
       ref={ref}
-      data-cursor="media"
       onClick={onOpen}
       onMouseMove={handleMove}
       onMouseLeave={() => { rx.set(0); ry.set(0); }}

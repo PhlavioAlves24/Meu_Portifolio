@@ -70,7 +70,6 @@
     font-family: var(--font-sans);
     font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01";
     -webkit-font-smoothing: antialiased;
-    cursor: none;
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
@@ -80,9 +79,6 @@
   ::selection {
     background: var(--brown-deep);
     color: var(--off-white);
-  }
-  @media (max-width: 768px) {
-    body { cursor: auto; }
   }
 }
 
