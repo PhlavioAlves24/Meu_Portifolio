@@ -494,6 +494,7 @@ const PROJECTS: Project[] = [
   {
     id: "p1",
     video: VIDEO_A,
+    poster: posterA,
     title: "Nova Studio — Landing Page",
     category: "Landing Page",
     description:
@@ -504,6 +505,7 @@ const PROJECTS: Project[] = [
   {
     id: "p2",
     video: VIDEO_B,
+    poster: posterB,
     title: "Ateliê Ícaro — Site Institucional",
     category: "Institucional",
     description:
@@ -514,6 +516,7 @@ const PROJECTS: Project[] = [
   {
     id: "p3",
     video: VIDEO_C,
+    poster: posterC,
     title: "Casa Praiã — E-commerce",
     category: "E-commerce",
     description:
@@ -524,6 +527,7 @@ const PROJECTS: Project[] = [
   {
     id: "p4",
     video: VIDEO_D,
+    poster: posterD,
     title: "Protocolo Referência — Landing Page",
     category: "Landing Page",
     description:
