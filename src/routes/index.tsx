@@ -655,18 +655,13 @@ function ProjectCard({
           <ArrowUpRight className="h-5 w-5" />
         </motion.div>
       </div>
-      <div className="mt-5 flex items-start justify-between gap-4 px-1">
-        <div>
-          <div className="text-[10px] uppercase tracking-[0.28em] text-brown-soft">
-            {project.category} · {project.year}
-          </div>
-          <div className="mt-2 font-display text-2xl leading-[1.05] text-brown-deep md:text-3xl">
-            {project.title}
-          </div>
+      <div className="mt-5 px-1">
+        <div className="text-[10px] uppercase tracking-[0.28em] text-brown-soft">
+          {project.category} · {project.year}
         </div>
-        <span className="whitespace-nowrap text-xs text-brown-deep/60 group-hover:text-brown-deep transition-colors">
-          Ver case →
-        </span>
+        <div className="mt-2 font-display text-2xl leading-[1.05] text-brown-deep md:text-3xl">
+          {project.title}
+        </div>
       </div>
     </motion.button>
   );
