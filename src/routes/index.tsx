@@ -37,6 +37,10 @@ import projectAVideo from "@/assets/project-a.mp4?url";
 import projectBVideo from "@/assets/project-b.mp4?url";
 import projectCVideo from "@/assets/project-c.mp4?url";
 import projectDVideoAsset from "@/assets/project-d.mp4.asset.json";
+import posterA from "@/assets/project-a-poster.jpg?url";
+import posterB from "@/assets/project-b-poster.jpg?url";
+import posterC from "@/assets/project-c-poster.jpg?url";
+import posterD from "@/assets/project-d-poster.jpg?url";
 import logoUrl from "@/assets/logo.png?url";
 
 const HERO_PHOTO = phlavioEnhancedPhoto;
@@ -478,6 +482,7 @@ function About() {
 type Project = {
   id: string;
   video: string;
+  poster: string;
   title: string;
   category: string;
   description: string;
@@ -489,6 +494,7 @@ const PROJECTS: Project[] = [
   {
     id: "p1",
     video: VIDEO_A,
+    poster: posterA,
     title: "Nova Studio — Landing Page",
     category: "Landing Page",
     description:
@@ -499,6 +505,7 @@ const PROJECTS: Project[] = [
   {
     id: "p2",
     video: VIDEO_B,
+    poster: posterB,
     title: "Ateliê Ícaro — Site Institucional",
     category: "Institucional",
     description:
@@ -509,6 +516,7 @@ const PROJECTS: Project[] = [
   {
     id: "p3",
     video: VIDEO_C,
+    poster: posterC,
     title: "Casa Praiã — E-commerce",
     category: "E-commerce",
     description:
@@ -519,6 +527,7 @@ const PROJECTS: Project[] = [
   {
     id: "p4",
     video: VIDEO_D,
+    poster: posterD,
     title: "Protocolo Referência — Landing Page",
     category: "Landing Page",
     description:
@@ -628,12 +637,14 @@ function ProjectCard({
         <video
           ref={videoRef}
           src={project.video}
+          poster={project.poster}
           muted
           loop
           playsInline
           autoPlay
           preload="metadata"
           onLoadedMetadata={(e) => e.currentTarget.play().catch(() => {})}
+          onCanPlay={(e) => e.currentTarget.play().catch(() => {})}
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-brown-deep/20 via-transparent to-transparent opacity-70" />
@@ -693,6 +704,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           <div className="relative aspect-video overflow-hidden rounded-[24px] ring-1 ring-black/5">
             <video
               src={project.video}
+              poster={project.poster}
               autoPlay
               loop
               muted
