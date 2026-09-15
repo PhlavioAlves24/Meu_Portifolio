@@ -704,6 +704,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           <div className="relative aspect-video overflow-hidden rounded-[24px] ring-1 ring-black/5">
             <video
               src={project.video}
+              poster={project.poster}
               autoPlay
               loop
               muted
