@@ -37,6 +37,10 @@ import projectAVideo from "@/assets/project-a.mp4?url";
 import projectBVideo from "@/assets/project-b.mp4?url";
 import projectCVideo from "@/assets/project-c.mp4?url";
 import projectDVideoAsset from "@/assets/project-d.mp4.asset.json";
+import posterA from "@/assets/project-a-poster.jpg?url";
+import posterB from "@/assets/project-b-poster.jpg?url";
+import posterC from "@/assets/project-c-poster.jpg?url";
+import posterD from "@/assets/project-d-poster.jpg?url";
 import logoUrl from "@/assets/logo.png?url";
 
 const HERO_PHOTO = phlavioEnhancedPhoto;
