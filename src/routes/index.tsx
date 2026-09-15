@@ -482,6 +482,7 @@ function About() {
 type Project = {
   id: string;
   video: string;
+  poster: string;
   title: string;
   category: string;
   description: string;
