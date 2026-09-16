@@ -32,7 +32,7 @@ import {
   useTransform,
   type MotionValue,
 } from "framer-motion";
-import phlavioEnhancedPhoto from "@/assets/phlavio-enhanced.png?url";
+import phlavioEnhancedPhoto from "@/assets/phlavio-enhanced.webp?url";
 import projectAVideo from "@/assets/project-a.mp4?url";
 import projectBVideo from "@/assets/project-b.mp4?url";
 import projectCVideo from "@/assets/project-c.mp4?url";
@@ -41,7 +41,7 @@ import posterA from "@/assets/project-a-poster.jpg?url";
 import posterB from "@/assets/project-b-poster.jpg?url";
 import posterC from "@/assets/project-c-poster.jpg?url";
 import posterD from "@/assets/project-d-poster.jpg?url";
-import logoUrl from "@/assets/logo.png?url";
+import logoUrl from "@/assets/logo-256.png?url";
 
 const HERO_PHOTO = phlavioEnhancedPhoto;
 const VIDEO_A = projectAVideo;
@@ -602,6 +602,35 @@ function ProjectCard({
   const srx = useSpring(rx, { stiffness: 200, damping: 20 });
   const sry = useSpring(ry, { stiffness: 200, damping: 20 });
 
+  // Carrega o vídeo apenas quando o card entra na tela (abertura mais rápida)
+  useEffect(() => {
+    const el = ref.current;
+    const vid = videoRef.current;
+    if (!el || !vid) return;
+    const load = () => {
+      if (!vid.getAttribute("src")) {
+        vid.setAttribute("src", project.video);
+        vid.load();
+        vid.play().catch(() => {});
+      }
+    };
+    if (typeof IntersectionObserver === "undefined") {
+      load();
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          load();
+          io.disconnect();
+        }
+      },
+      { rootMargin: "200px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [project.video]);
+
   const handleMove = (e: React.MouseEvent<HTMLButtonElement>) => {
     const rect = ref.current?.getBoundingClientRect();
     if (!rect) return;
@@ -636,14 +665,11 @@ function ProjectCard({
       <div className={`relative w-full overflow-hidden rounded-[28px] shadow-soft ring-1 ring-black/5 ${aspects[index % aspects.length]}`}>
         <video
           ref={videoRef}
-          src={project.video}
           poster={project.poster}
           muted
           loop
           playsInline
-          autoPlay
-          preload="metadata"
-          onLoadedMetadata={(e) => e.currentTarget.play().catch(() => {})}
+          preload="none"
           onCanPlay={(e) => e.currentTarget.play().catch(() => {})}
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
