@@ -339,44 +339,20 @@ function MagneticButton({
   primary?: boolean;
   external?: boolean;
 }) {
-  const ref = useRef<HTMLAnchorElement>(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const sx = useSpring(x, { stiffness: 300, damping: 20 });
-  const sy = useSpring(y, { stiffness: 300, damping: 20 });
-
-  const handleMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const rect = ref.current?.getBoundingClientRect();
-    if (!rect) return;
-    x.set((e.clientX - (rect.left + rect.width / 2)) * 0.25);
-    y.set((e.clientY - (rect.top + rect.height / 2)) * 0.25);
-  };
-  const handleLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
   return (
-    <motion.a
-      ref={ref}
+    <a
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer" : undefined}
-      style={{ x: sx, y: sy }}
-      onMouseMove={handleMove}
-      onMouseLeave={handleLeave}
-      className={`group relative inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium overflow-hidden ${
+      className={`inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium ${
         primary
           ? "bg-brown-deep text-[color:var(--off-white)]"
           : "border border-brown/40 text-brown-deep hover:bg-brown-deep hover:text-[color:var(--off-white)] transition-colors"
       }`}
     >
-      <span className="relative z-10">{children}</span>
-      <ArrowUpRight className="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-      {primary && (
-        <span className="absolute inset-0 -z-0 bg-brown-soft opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-      )}
-    </motion.a>
+      {children}
+      <ArrowUpRight className="h-4 w-4" />
+    </a>
   );
 }
 
