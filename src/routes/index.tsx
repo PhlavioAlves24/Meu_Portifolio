@@ -602,6 +602,35 @@ function ProjectCard({
   const srx = useSpring(rx, { stiffness: 200, damping: 20 });
   const sry = useSpring(ry, { stiffness: 200, damping: 20 });
 
+  // Carrega o vídeo apenas quando o card entra na tela (abertura mais rápida)
+  useEffect(() => {
+    const el = ref.current;
+    const vid = videoRef.current;
+    if (!el || !vid) return;
+    const load = () => {
+      if (!vid.getAttribute("src")) {
+        vid.setAttribute("src", project.video);
+        vid.load();
+        vid.play().catch(() => {});
+      }
+    };
+    if (typeof IntersectionObserver === "undefined") {
+      load();
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          load();
+          io.disconnect();
+        }
+      },
+      { rootMargin: "200px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [project.video]);
+
   const handleMove = (e: React.MouseEvent<HTMLButtonElement>) => {
     const rect = ref.current?.getBoundingClientRect();
     if (!rect) return;
