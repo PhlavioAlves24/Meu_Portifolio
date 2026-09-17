@@ -948,12 +948,12 @@ const TESTIMONIALS = [
   },
   {
     name: "Marina Costa",
-    role: "Fundadora, Nova Studio",
+    role: "Fundadora, Floricultura Belo Jardim",
     quote: "O Phlavio traduziu a alma da marca em um site que impressiona antes mesmo da primeira palavra ser lida. Dobramos leads em duas semanas.",
   },
   {
     name: "Rafael Ícaro",
-    role: "Arquiteto, Ateliê Ícaro",
+    role: "Advogado, Domus Legal",
     quote: "Direção de arte impecável e execução técnica que raramente se vê no mesmo profissional. Um verdadeiro parceiro criativo.",
   },
   {
