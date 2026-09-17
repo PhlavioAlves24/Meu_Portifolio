@@ -493,7 +493,7 @@ const PROJECTS: Project[] = [
     id: "p3",
     video: VIDEO_C,
     poster: posterC,
-    title: "Casa Praiã — E-commerce",
+    title: "Casa Praiã E-commerce",
     category: "E-commerce",
     description:
       "Loja online com identidade sofisticada e checkout otimizado. Aumento de 42% na taxa de conversão nos primeiros 60 dias.",
@@ -504,10 +504,10 @@ const PROJECTS: Project[] = [
     id: "p4",
     video: VIDEO_D,
     poster: posterD,
-    title: "Protocolo Referência — Landing Page",
+    title: "Floricultura Belo Jardim",
     category: "Landing Page",
     description:
-      "Experiência digital para posicionamento profissional na implantodontia, com apresentação clara da metodologia e foco em conversão.",
+      "Landing page encantadora para floricultura, com apresentação visual dos arranjos, pedidos diretos pelo WhatsApp e foco total em conversão.",
     stack: ["Web Design", "UI Design", "Desenvolvimento", "Conversão"],
     year: "2026",
   },
@@ -727,10 +727,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           </div>
 
           <div className="mt-auto flex flex-wrap gap-3 pt-8">
-            <a href="#projects" className="inline-flex items-center gap-2 rounded-full bg-brown-deep px-5 py-2.5 text-xs font-medium text-[color:var(--off-white)]">
-              <Play className="h-3.5 w-3.5" /> Ver projeto
-            </a>
-            <a href={WHATSAPP} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-brown/30 px-5 py-2.5 text-xs font-medium text-brown-deep hover:bg-brown-deep hover:text-[color:var(--off-white)] transition-colors">
+            <a href={WHATSAPP} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-brown-deep px-5 py-2.5 text-xs font-medium text-[color:var(--off-white)]">
               Solicitar orçamento <ArrowUpRight className="h-3.5 w-3.5" />
             </a>
           </div>
