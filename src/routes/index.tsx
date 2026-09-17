@@ -13,7 +13,6 @@ import {
   Instagram,
   Github,
   MessageCircle,
-  Play,
 } from "lucide-react";
 import {
   useEffect,
