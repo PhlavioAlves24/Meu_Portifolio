@@ -644,8 +644,10 @@ function ProjectCard({
           poster={project.poster}
           muted
           loop
+          autoPlay
           playsInline
           preload="none"
+          onLoadedData={(e) => e.currentTarget.play().catch(() => {})}
           onCanPlay={(e) => e.currentTarget.play().catch(() => {})}
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
